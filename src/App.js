@@ -21,7 +21,7 @@ function App() {
       <GlobalStyles />
       <Header/>
       <Routes>
-        <Route exact path="/" element={<CountriesList />} />
+        <Route exact path="/countries" element={<CountriesList />} />
         <Route exact path="/countryDetails" element={<CountryDetails />} />
       </Routes>
     </ThemeProvider>

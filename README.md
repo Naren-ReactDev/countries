@@ -1,7 +1,7 @@
 
-This project is published at [https://naren-reactdev.github.io/countries/]( https://naren-reactdev.github.io/countries/)
+This project is published at [https://naren-reactdev.github.io/countries/](https://naren-reactdev.github.io/countries/)
 
- # =============================================================================
+# ---------------------------------------
 
 # Getting Started with Create React App
 

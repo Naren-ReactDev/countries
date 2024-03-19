@@ -40,7 +40,7 @@ const CountryDetails = () => {
           <br />
           Capital: {country.capital}
           <br />
-          <h1>In progress</h1>
+          <h1>Styles in progress</h1>
         </div>
       </div>
     </>
