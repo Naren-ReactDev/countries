@@ -6,26 +6,29 @@ import { theme } from "./components/styledComponents/theme";
 import Header from "./components/header";
 import { Route, Routes } from "react-router-dom";
 import CountryDetails from "./components/countryDetails";
-import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import { Reducer } from "./components/redux/reducer";
+import { useSelector } from "react-redux";
+
 
 function App() {
-  const store =configureStore({
-    reducer: Reducer
-  })
 
+
+const isDark=useSelector((state)=>{
+ return state.isDark;
+})
+  
+
+  console.log("isDark===>" + isDark);
   return (
-    <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Header/>
-      <Routes>
-        <Route exact path="/countries" element={<CountriesList />} />
-        <Route exact path="/countryDetails" element={<CountryDetails />} />
-      </Routes>
-    </ThemeProvider>
-    </Provider>
+ 
+      <ThemeProvider theme={theme}>
+        <GlobalStyles isDark={isDark} />
+        <Header  isDark={isDark} />
+        <Routes>
+          <Route exact path="/countries" element={<CountriesList />} />
+          <Route exact path="/countryDetails" element={<CountryDetails />} />
+        </Routes>
+      </ThemeProvider>
+
   );
 }
 

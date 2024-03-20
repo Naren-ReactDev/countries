@@ -7,8 +7,6 @@ const CountryCardDiv = styled.div`
   width: 200px;
   border-radius: 4px;
   padding-bottom: 30px;
-  box-shadow: 3px 3px 3px hsl(0, 3%, 94%);
-  background-color: #ffffff;
   &:hover {
     cursor: pointer;
   }
@@ -28,7 +26,7 @@ const CountryName = styled.div`
   font-size: 16px;
   padding-bottom: 10px;
 `;
-const Countrylabel = styled.span`
+const LabelSpan = styled.span`
   font-weight: 800;
   padding-right: 4px;
 `;
@@ -43,25 +41,26 @@ const CountryCard = ({ country }) => {
 
   return (
     <CountryCardDiv
+      id="coutryCardDiv"
       onClick={() => {
         updateCountry();
       }}
     >
       <div style={{ height: "150px" }}>
-        <CountryImage src={country.flag}></CountryImage>
+        <CountryImage src={country.flag} alt={country.flag}></CountryImage>
       </div>
       <CountryCardDetails>
         <CountryName>{country.name}</CountryName>
         <div>
-          <Countrylabel>Population:</Countrylabel>
+          <LabelSpan>Population:</LabelSpan>
           {country.population}
         </div>
         <div>
-          <Countrylabel>Region:</Countrylabel>
+          <LabelSpan>Region:</LabelSpan>
           {country.region}
         </div>
         <div>
-          <Countrylabel>Capital:</Countrylabel>
+          <LabelSpan>Capital:</LabelSpan>
           {country.capital}
         </div>
       </CountryCardDetails>

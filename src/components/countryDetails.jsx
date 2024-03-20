@@ -1,48 +1,109 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import BackArrow from "../images/backArrow.svg";
 
 const BackButton = styled.button`
   width: 100px;
-  margin: 30px 30px 30px 30px;
-  background-color: #ffffff;
-  box-shadow: 0 0 2px 2px hsl(0, 0%, 62%);
+  margin: 40px 40px 40px 40px;
   border-radius: 4px;
   border-width: 0px;
   padding: 5px 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+const CountryImage = styled.img`
+  width: 300px;
+`;
+const BackArrowImage = styled.img`
+  width: 17px;
+`;
+const LabelSpan = styled.span`
+  font-weight: 800;
+  padding-right: 4px;
+  font-size: 12px;
 `;
 
-const CountryImage = styled.img`
-  width: 400px;
-  height: auto;
+const CountryNameDIV = styled.div`
+  font-weight: 800;
+  font-size: 26px;
+  padding-bottom: 10px;
 `;
+const CountryDetailsDiv = styled.div`
+  display: flex;
+  gap: 80px;
+  margin-left: 40px;
+  line-height: 23px;
+`;
+const CountryDetailsDiv2 = styled.div`
+  margin-top: 56.5px;
+`;
+const BorderCountriesDiv = styled.div`
+margin-left: 420px;
+margin-top:-30px`;
+
 const CountryDetails = () => {
   const navigate = useNavigate();
-  const country = useSelector((state) => state);
+  const country = useSelector((state) => state.country);
 
   console.log(country.name);
 
   return (
     <>
-      <BackButton onClick={() => navigate(-1)}>&lt;&nbsp;&nbsp;Back</BackButton>
-      <div style={{ display: "flex",gap:'50px' }}>
+      <BackButton id="backButton" onClick={() => navigate(-1)}>
+        <BackArrowImage src={BackArrow} alt="No Image"></BackArrowImage>
+        <label>Back</label>
+      </BackButton>
+      <CountryDetailsDiv id="countryDetailsDiv">
         <div>
-          <CountryImage src={country.flag}></CountryImage>
+          <CountryImage src={country.flag} alt="No Image" />
         </div>
         <div>
-          Name : {country.name}
+          <CountryNameDIV>{country.name}</CountryNameDIV>
           <br />
-          Population: {country.population}
+          <LabelSpan> Native Name:</LabelSpan> {country.nativeName}
           <br />
-          Region: {country.region}
+          <LabelSpan> Population:</LabelSpan> {country.population}
           <br />
-          Subregion: {country.subregion}
+          <LabelSpan> Region:</LabelSpan> {country.region}
           <br />
-          Capital: {country.capital}
+          <LabelSpan>Subregion:</LabelSpan> {country.subregion}
           <br />
-          <h1>Styles in progress</h1>
+          <LabelSpan> Capital:</LabelSpan> {country.capital}
+          <br />
         </div>
-      </div>
+        <CountryDetailsDiv2>
+          <LabelSpan> Top Level Domain:</LabelSpan> {country.topLevelDomain}{" "}
+          <br />
+          <LabelSpan>Currencies:</LabelSpan>
+          {country?.currencies
+            ?.map((currenncy) => {
+              return currenncy.name;
+            })
+            .join(", ")}
+          <br />
+          <LabelSpan>Languages:</LabelSpan>
+          {country?.languages
+            ?.map((currenncy) => {
+              return currenncy.name;
+            })
+            .join(", ")}
+        </CountryDetailsDiv2>
+      </CountryDetailsDiv>
+      <BorderCountriesDiv id="borderCountriesDiv">
+        <LabelSpan>
+          Border Countries:  </LabelSpan>
+          {country?.borders
+            ?.map((border) => {
+              return border;
+            })
+            .join(", ")}
+      
+      </BorderCountriesDiv>
     </>
   );
 };

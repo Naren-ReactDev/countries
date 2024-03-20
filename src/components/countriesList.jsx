@@ -12,9 +12,7 @@ const SearchBarDiv = styled.div`
 const SearchInputText = styled.input`
   width: 300px;
   height: 40px;
-  background-color: #ffffff;
-  border: none;
-  box-shadow: 2px 2px 3px rgb(219, 218, 218);
+  border: none;  
   border-radius: 4px;
   padding-left: 15px;
   margin-bottom: 50px;
@@ -22,9 +20,8 @@ const SearchInputText = styled.input`
 const RegionFiltorSelect = styled.select`
   width: 150px;
   height: 40px;
-  background-color: #ffffff;
   border: none;
-  box-shadow: 2px 2px 3px rgb(219, 218, 218);
+
   border-radius: 4px;
   padding-left: 15px;
 `;
@@ -45,7 +42,7 @@ const CountriesList = () => {
         country.name.toUpperCase().startsWith(searchText.toUpperCase())) &&
       (!selectedRegion || country.region === selectedRegion)
     ) {      
-      return <CountryCard country={country} />;
+      return <CountryCard country={country}  />;
     }else{
       return null;
     }
@@ -53,14 +50,14 @@ const CountriesList = () => {
 
   const loadRegionOptions = useMemo(() => {
     return ["Africa", "Americas", "Asia", "Europe", "Oceania"].map((region) => {
-      return <option key={region}>{region}</option>;
+      return <option key={region} >{region}</option>;
     });
   }, []);
 
   return (
     <div className="body">
       <SearchBarDiv>
-        <SearchInputText
+        <SearchInputText id="searchInputText"
           type="text"
           value={searchText}
           onChange={(e) => {
@@ -68,7 +65,7 @@ const CountriesList = () => {
           }}
           placeholder="Search for a country..."
         />
-        <RegionFiltorSelect
+        <RegionFiltorSelect id="regionFiltorSelect"
           onChange={(e) => {
             setSelectedRegion(e.target.value);
           }}
