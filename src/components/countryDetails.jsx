@@ -43,8 +43,7 @@ const CountryDetailsDiv2 = styled.div`
   margin-top: 56.5px;
 `;
 const BorderCountriesDiv = styled.div`
-margin-left: 420px;
-margin-top:-30px`;
+margin-left: 420px;`;
 
 const CountryDetails = () => {
   const navigate = useNavigate();
